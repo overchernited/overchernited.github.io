@@ -1,15 +1,27 @@
 ---
+import Tooltip from "../Tooltip/index.astro";
+import { useTranslations, type Locale } from "../../i18n";
+
 interface TechCard {
   techname: string;
   rating: number;
-  level: number;
+  level: string;
   href: string;
+  locale?: string;
 }
 
-const { techname, rating, level, href } = Astro.props as TechCard;
-import Tooltip from "../Tooltip/index.astro";
+const { techname, rating, level, href, locale: rawLocale } = Astro.props as TechCard;
+const locale = (rawLocale as Locale) || "en";
+const _ = useTranslations(locale);
 
+const levelMap: Record<string, string> = {
+  ADVANCED: _("technologies.level.advanced"),
+  MID: _("technologies.level.mid"),
+  BEGINNER: _("technologies.level.beginner"),
+};
+const levelText = levelMap[level] || level;
 ---
+
 <Tooltip text={`Go to ${href}`}>
 <a
 href={href}
@@ -26,7 +38,7 @@ class="card group flex w-full flex-col gap-5 rounded-3xl border border-white/10 
     </div>
     
     <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-bold uppercase tracking-[0.35em] text-white/70">
-      {level}
+      {levelText}
     </span>
   </div>
   

@@ -1,4 +1,6 @@
 ---
+import { useTranslations, type Locale } from "../i18n";
+
 interface Project {
   id: string;
   title: string;
@@ -9,18 +11,21 @@ interface Project {
 
 interface Props {
   projects: Project[];
+  locale?: string;
 }
-const { projects } = Astro.props;
+const { projects, locale: rawLocale } = Astro.props;
+const locale = (rawLocale as Locale) || "en";
+const _ = useTranslations(locale);
 const clamped = projects.slice(0, 4);
 ---
 
 <section class="w-full max-w-6xl px-6 mb-32">
-  <h2 class="title text-center text-3xl font-extrabold mb-10">More projects</h2>
+  <h2 class="title text-center text-3xl font-extrabold mb-10">{_("projects.more")}</h2>
 
   <div class="flex-col md:flex-row flex justify-center items-center gap-6">
     {clamped.map((p) => (
       <a
-        href={`/projects/${p.id}`}
+        href={`/${locale}/projects/${p.id}`}
         class="group rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition-all duration-300 hover:border-indigo-500/50 hover:shadow-lg hover:shadow-indigo-500/10"
       >
         <img

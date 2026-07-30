@@ -7,7 +7,7 @@ export default defineConfig({
   base: "/",
   trailingSlash: 'never',
   integrations: [
-    sitemap()
+    sitemap(),
   ],
   vite: {
     plugins: [

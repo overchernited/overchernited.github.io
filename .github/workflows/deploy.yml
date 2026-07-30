@@ -28,7 +28,7 @@ jobs:
           version: 9
 
       - name: Enable pnpm cache
-        run: pnpm config set store-dir ~/.pnpm-store
+        run: pnpm config set --global store-dir ~/.pnpm-store
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile

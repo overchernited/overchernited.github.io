@@ -50,7 +50,20 @@ import "../styles/global.css";
 </html>
 
 <script>
+  import Lenis from "lenis";
   import gsap from "gsap";
+
+  const lenis = new Lenis({
+    smoothWheel: true,
+    smoothTouch: false,
+  });
+
+  function raf(time: number): void {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
 
   gsap.to(".title", {
     backgroundPosition: "100% center",

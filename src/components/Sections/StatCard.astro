@@ -1,0 +1,25 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  description: string;
+  subtitle?: string;
+  divider?: boolean;
+}
+
+const { icon, title, description, subtitle, divider = false } = Astro.props as Props;
+---
+
+<article
+  class="flex flex-col gap-2 px-6 py-1 border-white border-r"
+>
+  <div class="flex items-center justify-between text-indigo-300">
+    <span class="text-2xl">{icon}</span>
+    <span class="text-lg font-bold">&gt;</span>
+  </div>
+  <p class="text-xs font-bold uppercase tracking-[0.35em] text-white/45">{title}</p>
+  <div class="flex flex-col text-white">
+    <span class="text-lg font-semibold leading-tight">{description}</span>
+    {subtitle && <span class="text-sm text-white/70">{subtitle}</span>}
+  </div>
+</article>

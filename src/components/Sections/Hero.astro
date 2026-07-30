@@ -1,25 +1,49 @@
+---
+import Tooltip from "../Tooltip/index.astro";
+---
+
 <section
   class="text-white text-4xl flex flex-col items-center justify-center h-[85vh]"
 >
-  <div class="p-4 parallax text-left items-start flex flex-col gap-4">
+  <div class="p-4 [*_&]:line parallax text-left items-start flex flex-col gap-4">
     <code class="line opacity-0 text-lg font-black text-gray-200 bg-indigo-600"
       ><pre> user@browser:~$ </pre></code
     >
     <code class="line opacity-0 text-lg"><pre>> whoami </pre></code>
     <aside class="line opacity-0 flex flex-col">
-      <code class="title font-bold text-[clamp(4rem,5vw,6rem)]"
+      <code class="title font-bold leading-none whitespace-nowrap text-[clamp(2.4rem,6vw,10rem)]"
         >Marlon Hernández</code
       >
-      <code class="title font-bold text-[clamp(2rem,5vw,2.5rem)]"
-        >Software Developer</code
+      <code class="title lg:font-bold leading-none whitespace-nowrap text-[clamp(2rem,5vw,2.5rem)]"
+        >Frontend Developer</code
       >
+      <code class="text-gray-300 my-5 text-[clamp(1rem,5vw,1.5rem)]">
+        Thinking outside the box to create technology that makes an impact.
+      </code>
     </aside>
-    <aside class="*:hover:underline">
-      <a href="https://github.com/overchernited" class="text-xl">github</a>
-      <a href="https://github.com/overchernited" class="text-xl">cv</a>
-      <a class="text-xl">linkedin</a>
-      <a class="text-xl">gmail</a>
-    </aside>
+
+    <div class="line opacity-0 flex flex-col lg:flex-row gap-4 justify-center lg:justify-between w-full items-center">
+      
+      <aside class="flex flex-wrap gap-x-3 gap-y-2 *:hover:underline">
+        <Tooltip text="$ open github">
+          <a href="https://github.com/overchernited" class="text-xl">GitHub ·</a>
+        </Tooltip>
+        <Tooltip text="$ open resume">
+          <a href="https://github.com/overchernited" class="text-xl">Resume ·</a>
+        </Tooltip>
+        <Tooltip text="$ open linkedin">
+          <a class="text-xl">LinkedIn ·</a>
+        </Tooltip>
+        <Tooltip text="$ send email">
+          <a class="text-xl">Gmail</a>
+        </Tooltip>
+      </aside>
+
+      <Tooltip text="Explore my work">
+        <a class="gradient-button text-2xl" href="/projects">View Projects</a>
+      </Tooltip>
+    </div>
+    
   </div>
 </section>
 

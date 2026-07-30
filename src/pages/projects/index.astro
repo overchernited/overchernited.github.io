@@ -2,38 +2,23 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 const projects: CollectionEntry<"projects">[] = await getCollection("projects");
 
+import ProjectCardContent from "../../components/ProjectCard/Content.astro";
 import ProjectCard from "../../components/ProjectCard/index.astro";
 import ProjectsLayout from "../../layouts/ProjectsLayout.astro";
 ---
 
 <ProjectsLayout>
-  <!-- Mobile: static flex layout -->
-  <div class="flex flex-wrap justify-center items-start gap-6 p-4 md:hidden">
+  <!-- Mobile: unified card layout -->
+  <div class="grid w-full grid-cols-1 gap-6 p-4 sm:grid-cols-2 lg:hidden">
     {
       projects.map((p) => (
-        <a
-          href={`/projects/${p.id}`}
-          class="text-white flex flex-col justify-center items-center"
-        >
-          <div
-            class="h-40 w-40
-            text-center font-light text-white
-            bg-indigo-900/20 backdrop-blur-xs rounded-xl m-5 p-2 flex justify-center items-center
-            shadow-2xl"
-          >
-            <img src={p.data.icon} alt={`${p.data.title} image`} />
-          </div>
-          <div class="flex flex-col gap-5 items-center text-center">
-            <h2 class="font-extrabold tracking-widest text-3xl">{p.data.title}</h2>
-            <p class="tracking-widest text-xl text-wrap w-80">{p.data.description}</p>
-          </div>
-          <aside>
-            <aside class="flex gap-2">
-              {p.data.tags.map((tag: string) => (
-                <span class="title">{tag}</span>
-              ))}
-            </aside>
-          </aside>
+        <a href={`/projects/${p.id}`} class="block w-full max-w-xl">
+          <ProjectCardContent
+            img={p.data.icon}
+            title={p.data.title}
+            description={p.data.description}
+            tags={p.data.tags}
+          />
         </a>
       ))
     }

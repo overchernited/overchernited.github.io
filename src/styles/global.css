@@ -2,6 +2,8 @@
 @plugin "@tailwindcss/typography";
 
 
+
+
 .jetbrains-mono-font {
     font-family: "JetBrains Mono", monospace;
     font-optical-sizing: auto;
@@ -20,6 +22,36 @@
     -webkit-text-fill-color: transparent;
 }
 
+.gradient-button {
+    @apply inline-flex items-center justify-center rounded-xl px-5 py-3 font-black text-[#0f0925] transition-transform duration-300 ease-out;
+    background: linear-gradient(120deg, #3b82f6, #a855f7);
+    background-size: 300% 300%;
+    animation: gradient-button-shift 2s ease infinite;
+}
+
+.gradient-button:hover {
+    transform: translateY(-1px) scale(1.02);
+}
+
+.gradient-button:focus-visible {
+    outline: 2px solid #f8fafc;
+    outline-offset: 3px;
+}
+
+@keyframes gradient-button-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 * {
     user-select: none;
 }
@@ -27,6 +59,7 @@
 html {
     background-color: #0f0925;
     min-height: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -43,7 +76,7 @@ body::before {
     z-index: -2;
 
     background: -webkit-linear-gradient(144deg,
-            rgba(15, 9, 37, 1) 0%,
+            #0f0925 0%,
             rgb(20, 20, 20) 54%,
             rgba(15, 9, 37, 1) 100%);
     background: -moz-linear-gradient(144deg,

@@ -1,25 +1,19 @@
 ---
-import ResumeCard from "../../components/ResumeCard/index.astro";
+import InfoCard from "./InfoCard.astro";
 ---
 
-<h2
-  class="sequence title opacity-0 text-3xl mt-10 py-2 font-extrabold border-b-2 border-indigo-300 text-white"
->
-  My Studies
-</h2>
-<div
-  class="flex flex-col justify-start items-start text-white gap-20 mt-10 mb-30"
->
-  <ResumeCard
-    degree="Professional Technician in Software Development"
-    institution="Fundación Universitaria Compensar"
-    fromyear={2026}
-    toyear="Present"
-  />
-  <ResumeCard
-    degree="Application and Cloud Services Development Technician"
-    institution="Servicio Nacional de Aprendizaje"
-    fromyear={2023}
-    toyear={2025}
-  />
-</div>
+<section class="flex flex-col gap-5">
+  <h3 class="title text-3xl font-extrabold md:text-4xl">Studies</h3>
+  <div class="flex flex-col gap-4 text-sm text-white/85 md:text-base">
+    <InfoCard
+      icon="●"
+      title="Professional Technician in Software Development"
+      items={['Fundación Universitaria Compensar', '2026 - Present']}
+    />
+    <InfoCard
+      icon="●"
+      title="Application and Cloud Services Development Technician"
+      items={['Servicio Nacional de Aprendizaje', '2023 - 2025']}
+    />
+  </div>
+</section>

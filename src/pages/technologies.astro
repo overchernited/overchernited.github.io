@@ -10,15 +10,15 @@ import TechCard from "../components/TechCard/index.astro";
     <p class="text-3xl my-4">> TECH STACK</p>
 
     <div
-      class="flex flex-col md:flex-row justify-center content-center flex-wrap gap-x-10 gap-y-8"
+      class="grid w-full max-w-6xl grid-cols-1 gap-6 px-4 sm:grid-cols-2 xl:grid-cols-3"
     >
-      <TechCard techname="Solid.js" rating="4" level="ADVANCED" />
-      <TechCard techname="React.js" rating="3" level="MID" />
-      <TechCard techname="Next.js" rating="3" level="MID" />
-      <TechCard techname="Astro.js" rating="2" level="BEGINNER" />
-      <TechCard techname="Tailwind" rating="3" level="MID" />
-      <TechCard techname="Supabase" rating="3" level="MID" />
-      <TechCard techname="Godot" rating="2" level="BEGINNER" />
+      <TechCard techname="Solid.js" rating={4} level="ADVANCED" href="https://www.solidjs.com/" />
+      <TechCard techname="React.js" rating={3} level="MID" href="https://react.dev/" />
+      <TechCard techname="Next.js" rating={3} level="MID" href="https://nextjs.org/" />
+      <TechCard techname="Astro.js" rating={2} level="BEGINNER" href="https://astro.build/" />
+      <TechCard techname="Tailwind" rating={3} level="MID" href="https://tailwindcss.com/" />
+      <TechCard techname="Supabase" rating={3} level="MID" href="https://supabase.com/" />
+      <TechCard techname="Godot" rating={2} level="BEGINNER" href="https://godotengine.org/" />
     </div>
   </div>
 </Layout>

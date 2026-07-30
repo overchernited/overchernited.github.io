@@ -1,0 +1,104 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import ProjectSlider from "../../../components/ProjectSlider.astro";
+import projectsData from "../../../data/projects.json";
+import Helpit from "../../../components/projects/content/helpit.astro";
+import Liftio from "../../../components/projects/content/liftio.astro";
+import Kat from "../../../components/projects/content/kat.astro";
+import { useTranslations, type Locale, locales } from "../../../i18n";
+
+const componentMap: Record<string, any> = {
+  helpit: Helpit,
+  liftio: Liftio,
+  kat: Kat,
+};
+
+export async function getStaticPaths() {
+  const paths: { params: { locale: string; slug: string }; props: { project: any; locale: Locale } }[] = [];
+  for (const locale of locales) {
+    for (const project of projectsData.projects) {
+      paths.push({
+        params: { locale, slug: project.id },
+        props: { project, locale },
+      });
+    }
+  }
+  return paths;
+}
+
+const { locale, project } = Astro.props as { locale: Locale; project: any };
+const _ = useTranslations(locale);
+const { title, description, icon, tags } = project;
+const Content = componentMap[project.id] || null;
+const otherProjects = projectsData.projects.filter((p) => p.id !== project.id);
+---
+
+<Layout title={title} description={description} locale={locale}>
+  <main class="flex flex-col items-center">
+    <section class="relative flex min-h-dvh w-full flex-col items-center justify-center px-6 pb-16">
+      <a
+        href={`/${locale}/projects`}
+        class="fixed left-6 top-6 z-100 rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm font-bold tracking-widest text-white/70 backdrop-blur-xl transition-all duration-300 hover:border-indigo-500/50 hover:text-white hover:shadow-lg hover:shadow-indigo-500/20"
+      >
+        {_("projects.back")}
+      </a>
+
+      <div class="flex flex-col items-center gap-8">
+        <img
+          src={icon}
+          alt={`${title} preview`}
+          class="h-44 w-44 animate-[float_4s_ease-in-out_infinite] object-cover md:h-52 md:w-52"
+        />
+        <h1 class="title text-center text-[clamp(4rem,12vw,10rem)] font-extrabold leading-none">
+          {title}
+        </h1>
+        <p class="max-w-2xl text-center text-lg leading-relaxed text-gray-400 md:text-xl">
+          {description}
+        </p>
+        <div class="flex flex-wrap justify-center gap-3">
+          {tags.map((tag: string) => (
+            <span class="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-indigo-300/90 backdrop-blur-sm">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="w-full max-w-4xl px-6 mb-[5%]">
+      {Content ? (
+        <Content locale={locale} />
+      ) : (
+        <p class="text-center text-gray-500">No content component found for this project.</p>
+      )}
+    </section>
+
+    {otherProjects.length > 0 && <ProjectSlider projects={otherProjects} locale={locale} />}
+  </main>
+</Layout>
+
+<style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from("h1", {
+    scale: 3,
+    opacity: 0,
+    duration: 0.8,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: "h1",
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+  });
+</script>

@@ -1,0 +1,109 @@
+{
+  "nav": {
+    "home": "MaHe",
+    "about": "About",
+    "appearances": "Appearances",
+    "projects": "Projects",
+    "technologies": "Technologies"
+  },
+  "hero": {
+    "prompt": "user@browser:~$",
+    "whoami": "> whoami",
+    "tagline": "Thinking outside the box to create technology that makes an impact.",
+    "github": "GitHub ·",
+    "resume": "Resume ·",
+    "linkedin": "LinkedIn ·",
+    "gmail": "Gmail",
+    "viewProjects": "View Projects"
+  },
+  "about": {
+    "cat": "$ cat about.md",
+    "title1": "Building ideas.",
+    "title2": "Solving problems.",
+    "title3": "Creating impact.",
+    "bio": "I'm a frontend developer from Colombia passionate about building useful, intuitive and visually engaging web experiences. I love turning complex ideas into simple solutions through clean code, good design and constant learning.",
+    "age": "AGE",
+    "ageValue": "18 years old",
+    "location": "LOCATION",
+    "locationValue": "Bogotá, Colombia",
+    "education": "EDUCATION",
+    "educationValue": "Software Engineering Student",
+    "educationSub": "@ Compensar",
+    "focus": "FOCUS",
+    "focusValue": "Frontend Development",
+    "focusSub": "Web · Hardware · Games"
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "Explore Marlon Hernández's projects: Liftio, KAT, Helpit and more.",
+    "more": "More projects",
+    "back": "← Back",
+    "content": {
+      "helpit": {
+        "what": "🚀 What is it",
+        "problem": "🧠 Problem",
+        "solution": "💡 Solution",
+        "demo": "🎥 Demo"
+      },
+      "liftio": {
+        "what": "🚀 What is it",
+        "problem": "🧠 Problem",
+        "solution": "💡 Solution",
+        "demo": "🎥 Demo"
+      },
+      "kat": {
+        "what": "🚀 What is it",
+        "problem": "🧠 Problem",
+        "solution": "💡 Solution",
+        "demo": "🎥 Demo"
+      }
+    }
+  },
+  "technologies": {
+    "cat": "$ cat techstack.md",
+    "title": "Tech stack",
+    "level": {
+      "advanced": "ADVANCED",
+      "mid": "MID",
+      "beginner": "BEGINNER"
+    }
+  },
+  "appearances": {
+    "cat": "$ cat appearances.md",
+    "title": "Public appearances and mentions",
+    "articleTitle": "Un joven programador transforma su pasión por la tecnología en propósito social a través de SENATIC",
+    "articleFrom": "OIT | Senatic",
+    "articleDescription": "A sus 17 años, Marlon Santiago Hernández López ya mira al mundo desde el código. La tecnología no es solo su pasión temprana, sino su lenguaje para transformar realidades."
+  },
+  "footer": {
+    "copyright": "Marlon Hernández 2026",
+    "tooltip": {
+      "github": "$ open github",
+      "resume": "$ open resume",
+      "linkedin": "$ open linkedin",
+      "gmail": "$ send email"
+    }
+  },
+  "seo": {
+    "home": {
+      "title": "Frontend Developer",
+      "description": "Personal portfolio of Marlon Hernández, frontend developer passionate about creating technology that makes an impact."
+    },
+    "about": {
+      "title": "About",
+      "description": "Learn more about Marlon Hernández, his career, studies, and passion for technology and frontend development."
+    },
+    "projects": {
+      "title": "Projects",
+      "description": "Explore Marlon Hernández's projects: Liftio, KAT, Helpit and more."
+    },
+    "technologies": {
+      "title": "Technologies",
+      "description": "Technologies I work with: Solid.js, React.js, Next.js, Astro.js, Tailwind CSS, Supabase and more."
+    },
+    "appearances": {
+      "title": "Appearances",
+      "description": "Public appearances and mentions of Marlon Hernández in media and conferences."
+    }
+  }
+}

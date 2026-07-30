@@ -1,31 +1,41 @@
 ---
 import Title from "../Title.astro";
+import { useTranslations, type Locale } from "../../../i18n";
+
+export interface Props {
+  locale?: string;
+}
+
+const { locale: rawLocale } = Astro.props;
+const locale = (rawLocale as Locale) || "en";
+const _ = useTranslations(locale);
+const t = (key: string) => _(`projects.content.liftio.${key}`);
 ---
 
 <section class="flex flex-col gap-8">
   <div>
-    <Title>🚀 Qué es</Title>
+    <Title>{t("what")}</Title>
     <p class="mt-4 text-lg leading-8 text-slate-300">
       Liftio es una plataforma...
     </p>
   </div>
 
   <div>
-    <Title>🧠 Problema</Title>
+    <Title>{t("problem")}</Title>
     <p class="mt-4 text-lg leading-8 text-slate-300">
       Muchas personas...
     </p>
   </div>
 
   <div>
-    <Title>💡 Solución</Title>
+    <Title>{t("solution")}</Title>
     <p class="mt-4 text-lg leading-8 text-slate-300">
       Creamos una plataforma...
     </p>
   </div>
 
   <div>
-    <Title>🎥 Demo</Title>
+    <Title>{t("demo")}</Title>
     <p class="mt-4 text-lg leading-8 text-slate-300">
       Demo content...
     </p>

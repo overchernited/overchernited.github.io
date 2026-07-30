@@ -1,6 +1,6 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
-const projects: CollectionEntry<"projects">[] = await getCollection("projects");
+import projectsData from "../../data/projects.json";
+const projects = projectsData.projects;
 
 import ProjectCardContent from "../../components/ProjectCard/Content.astro";
 import ProjectCard from "../../components/ProjectCard/index.astro";
@@ -17,10 +17,10 @@ import ProjectsLayout from "../../layouts/ProjectsLayout.astro";
       projects.map((p) => (
         <a href={`/projects/${p.id}`} class="block w-full max-w-xl">
           <ProjectCardContent
-            img={p.data.icon}
-            title={p.data.title}
-            description={p.data.description}
-            tags={p.data.tags}
+            img={p.icon}
+            title={p.title}
+            description={p.description}
+            tags={p.tags}
           />
         </a>
       ))
@@ -32,13 +32,13 @@ import ProjectsLayout from "../../layouts/ProjectsLayout.astro";
     {
       projects.map((p) => (
         <ProjectCard
-          img={p.data.icon}
-          title={p.data.title}
-          description={p.data.description}
-          top={p.data.top}
-          left={p.data.left}
+          img={p.icon}
+          title={p.title}
+          description={p.description}
+          top={p.top}
+          left={p.left}
           slug={p.id}
-          tags={p.data.tags}
+          tags={p.tags}
         />
       ))
     }

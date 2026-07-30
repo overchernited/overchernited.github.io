@@ -1,26 +1,31 @@
 ---
-import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import projectsData from "../../data/projects.json";
+import Helpit from "../../components/projects/content/helpit.astro";
+import Liftio from "../../components/projects/content/liftio.astro";
+import Kat from "../../components/projects/content/kat.astro";
+
+const componentMap: Record<string, any> = {
+  helpit: Helpit,
+  liftio: Liftio,
+  kat: Kat,
+};
 
 export async function getStaticPaths() {
-  const projects = await getCollection("projects");
-
-  return projects.map((p) => ({
+  return projectsData.projects.map((p) => ({
     params: { slug: p.id },
     props: { project: p },
   }));
 }
 
 const { project } = Astro.props;
-
-const { Content } = await render(project);
-const { title, description, icon, tags } = project.data;
+const { title, description, icon, tags } = project;
+const Content = componentMap[project.id] || null;
 ---
 
 <Layout title={title} description={description}>
   <main class="flex flex-col items-center">
-    <!-- Hero -->
-      <section class="relative flex min-h-dvh w-full flex-col items-center justify-center px-6 pb-16">
+    <section class="relative flex min-h-dvh w-full flex-col items-center justify-center px-6 pb-16">
       <a
         href="/projects"
         class="fixed left-6 top-6 z-100 rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm font-bold tracking-widest text-white/70 backdrop-blur-xl transition-all duration-300 hover:border-indigo-500/50 hover:text-white hover:shadow-lg hover:shadow-indigo-500/20"
@@ -32,55 +37,30 @@ const { title, description, icon, tags } = project.data;
         <img
           src={icon}
           alt={`${title} preview`}
-          class="h-44 w-44 animate-[float_4s_ease-in-out_infinite] object-cover  md:h-52 md:w-52"
+          class="h-44 w-44 animate-[float_4s_ease-in-out_infinite] object-cover md:h-52 md:w-52"
         />
-
-        <h1
-          id="project-title"
-          class="title text-center text-[clamp(4rem,12vw,10rem)] font-extrabold leading-none"
-        >
+        <h1 class="title text-center text-[clamp(4rem,12vw,10rem)] font-extrabold leading-none">
           {title}
         </h1>
-
         <p class="max-w-2xl text-center text-lg leading-relaxed text-gray-400 md:text-xl">
           {description}
         </p>
-
-
-        
         <div class="flex flex-wrap justify-center gap-3">
-          {
-            tags.map((tag: string) => (
-              <span class="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-indigo-300/90 backdrop-blur-sm">
-                {tag}
-              </span>
-            ))
-          }
-        </div>
-        <div class="font-extrabold animate-pulse flex flex-row items-center gap-2 text-indigo-300/80">
-          <p>Scroll down</p>
-          <p class="text-5xl">⬇</p>
+          {tags.map((tag: string) => (
+            <span class="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-indigo-300/90 backdrop-blur-sm">
+              {tag}
+            </span>
+          ))}
         </div>
       </div>
     </section>
 
-    <!-- Content -->
-    <section class="w-full max-w-4xl px-6 mt-10">
-      <div
-        id="project-content"
-        class="prose prose-invert max-w-none rounded-3xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-sm md:p-16
-        mb-80
-          prose-headings:font-bold
-          prose-headings:mt-8
-          prose-headings:mb-4
-          prose-h1:text-5xl prose-h1:text-white
-          prose-h2:text-3xl prose-h2:text-slate-100
-          prose-h3:text-2xl prose-h3:text-slate-200
-          prose-p:text-lg prose-p:leading-8 prose-p:text-slate-300
-          prose-strong:text-white"
-      >
+    <section class="w-full max-w-4xl px-6 mt-10 mb-32">
+      {Content ? (
         <Content />
-      </div>
+      ) : (
+        <p class="text-center text-gray-500">No content component found for this project.</p>
+      )}
     </section>
   </main>
 </Layout>
@@ -98,27 +78,14 @@ const { title, description, icon, tags } = project.data;
 
   gsap.registerPlugin(ScrollTrigger);
 
-  gsap.from("#project-title", {
+  gsap.from("h1", {
     scale: 3,
     opacity: 0,
     duration: 0.8,
     ease: "power3.out",
     scrollTrigger: {
-      trigger: "#project-title",
+      trigger: "h1",
       start: "top 80%",
-      toggleActions: "play none none none",
-    },
-  });
-
-  gsap.from("#project-content", {
-    opacity: 0,
-    y: 60,
-    scale: 0.5,
-    duration: 1,
-    ease: "power3.out",
-    scrollTrigger: {
-      trigger: "#project-content",
-      start: "top 85%",
       toggleActions: "play none none none",
     },
   });

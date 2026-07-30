@@ -1,0 +1,11 @@
+---
+interface Props {
+  as?: "h1" | "h2" | "h3";
+}
+
+const { as: Tag = "h2" } = Astro.props;
+---
+
+<Tag class="title text-[clamp(1.8rem,4vw,3rem)] font-extrabold leading-tight">
+  <slot />
+</Tag>

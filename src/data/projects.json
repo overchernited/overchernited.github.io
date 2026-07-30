@@ -1,0 +1,31 @@
+{
+  "projects": [
+    {
+      "id": "helpit",
+      "title": "Helpit",
+      "description": "Mental Health Social Network",
+      "top": 400,
+      "left": 100,
+      "icon": "/images/helpit.png",
+      "tags": ["fitness", "web"]
+    },
+    {
+      "id": "liftio",
+      "title": "Liftio",
+      "description": "Personalized Coaching Web App",
+      "top": 100,
+      "left": 400,
+      "icon": "/images/liftio.png",
+      "tags": ["fitness", "web"]
+    },
+    {
+      "id": "kat",
+      "title": "KAT",
+      "description": "Personalized Coaching Web App",
+      "top": 500,
+      "left": 600,
+      "icon": "/images/kat.png",
+      "tags": ["fitness", "web"]
+    }
+  ]
+}

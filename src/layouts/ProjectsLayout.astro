@@ -1,12 +1,14 @@
 ---
 import Navbar from "../components/Navbar/index.astro";
 import "../styles/global.css";
+import { detectLocale, useTranslations, switchLocalePath, defaultLocale } from "../i18n";
 
 export interface Props {
   title: string;
   description: string;
   image?: string;
   canonicalURL?: string;
+  locale?: string;
 }
 
 const {
@@ -14,20 +16,28 @@ const {
   description,
   image = "https://overchernited.github.io/og-image.png",
   canonicalURL = Astro.url,
+  locale: rawLocale,
 } = Astro.props;
 
+const locale = (rawLocale as any) || detectLocale(Astro.url.pathname);
+const _ = useTranslations(locale);
 const siteName = "Marlon Hernández";
 const fullTitle = `${title} | ${siteName}`;
+const siteUrl = "https://overchernited.github.io";
+const canonical = canonicalURL.toString().split("?")[0];
+const otherLocale = locale === "en" ? "es" : "en";
+const otherPath = switchLocalePath(Astro.url.pathname, otherLocale);
+
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="keywords" content="Marlon Hernández, frontend developer, portfolio, proyectos, desarrollo web" />
-    <meta name="author" content="Marlon Hernández" />
+    <meta name="keywords" content="Marlon Hernandez, frontend developer, portfolio, proyectos, desarrollo web" />
+    <meta name="author" content="Marlon Hernandez" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
@@ -46,17 +56,19 @@ const fullTitle = `${title} | ${siteName}`;
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
 
-    <link rel="canonical" href={canonicalURL} />
-    <link rel="alternate" hreflang="es" href={canonicalURL} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang={locale} href={canonical} />
+    <link rel="alternate" hreflang={otherLocale} href={`${siteUrl}${otherPath}`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}${switchLocalePath(Astro.url.pathname, "en")}`} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
-    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={siteName} />
-    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale" content={locale === "en" ? "en_US" : "es_ES"} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -67,7 +79,7 @@ const fullTitle = `${title} | ${siteName}`;
     <title>{fullTitle}</title>
   </head>
   <body>
-    <Navbar />
+    <Navbar locale={locale} />
     <slot />
   </body>
 </html>

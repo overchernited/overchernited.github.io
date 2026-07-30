@@ -16,7 +16,10 @@ const { project } = Astro.props;
 const { Content } = await render(project);
 ---
 
-<Layout>
+<Layout
+  title={project.data.title}
+  description={project.data.description}
+>
   <main
     class="parallax h-screen flex flex-col items-center justify-center p-10"
   >

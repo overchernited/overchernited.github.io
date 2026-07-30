@@ -2,30 +2,36 @@
 import Currently from "./Currently.astro";
 import StatCard from "./StatCard.astro";
 import Studies from "./Studies.astro";
+import { useTranslations, type Locale } from "../../i18n";
+
+export interface Props {
+  locale?: string;
+}
+
+const { locale: rawLocale } = Astro.props;
+const locale = (rawLocale as Locale) || "en";
+const _ = useTranslations(locale);
 ---
 
 <section
   class="mx-auto flex w-full max-w md:max-w-[80%] flex-col gap-10 px-6 py-10 text-white lg:px-10"
 >
   <div class="sequence opacity-0 text-lg text-indigo-300">
-    <pre>$ cat about.md</pre>
+    <pre>{_("about.cat")}</pre>
   </div>
 
   <div class="grid items-center gap-12 lg:grid-cols-[1.25fr_0.85fr] lg:gap-20">
     <div class="flex flex-col gap-6">
       <h2 class="max-w-4xl text-[clamp(2.5rem,7vw,4.5rem)] font-extrabold md:text-left">
-        <span class="sequence title">Building ideas.</span>
+        <span class="sequence title">{_("about.title1")}</span>
         <br />
-        <span class="sequence title">Solving problems.</span>
+        <span class="sequence title">{_("about.title2")}</span>
         <br />
-        <span class="sequence title">Creating impact.</span>
+        <span class="sequence title">{_("about.title3")}</span>
       </h2>
 
       <p class="sequence max-w-3xl text-justify text-[clamp(1rem,2vw,1.2rem)] leading-8 text-white/85 md:text-left">
-        I’m a frontend developer from Colombia passionate about building useful,
-        intuitive and visually engaging web experiences. I love turning complex
-        ideas into simple solutions through clean code, good design and constant
-        learning.
+        {_("about.bio")}
       </p>
     </div>
 
@@ -47,37 +53,37 @@ import Studies from "./Studies.astro";
     <div class="grid gap-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-2xl shadow-black/20 md:grid-cols-4 hover:border-indigo-500 transition-all hover:shadow-indigo-500/30 duration-150">
       <StatCard
       icon="▣"
-      title="AGE"
-      description="18 years old"
+      title={_("about.age")}
+      description={_("about.ageValue")}
       />
       
       <StatCard
       icon="◉"
-      title="LOCATION"
-      description="Bogotá, Colombia"
+      title={_("about.location")}
+      description={_("about.locationValue")}
       divider={true}
       />
       
       <StatCard
       icon="▱"
-      title="EDUCATION"
-      description="Software Engineering Student"
-      subtitle="@ Compensar"
+      title={_("about.education")}
+      description={_("about.educationValue")}
+      subtitle={_("about.educationSub")}
       divider={true}
       />
       
       <StatCard
       icon="➤"
-      title="FOCUS"
-      description="Frontend Development"
-      subtitle="Web · Hardware · Games"
+      title={_("about.focus")}
+      description={_("about.focusValue")}
+      subtitle={_("about.focusSub")}
       divider={true}
       />
     </div>
   </div>
 
   <div class="sequence grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
-    <Currently />
-    <Studies />
+    <Currently locale={locale} />
+    <Studies locale={locale} />
   </div>
 </section>

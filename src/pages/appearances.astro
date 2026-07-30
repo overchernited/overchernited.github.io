@@ -5,9 +5,16 @@ import CardAppareance from "../components/CardAppareance/index.astro";
 
 <Layout>
   <div
-    class="parallax text-white h-screen flex flex-col justify-center items-center gap-5 p-4"
+    class="parallax text-white min-h-screen flex flex-col justify-center items-center gap-8 px-5 py-10"
   >
-    <h2 class="font-extrabold text-3xl">Public Appearances and Mentions</h2>
+    <div class="flex flex-col items-center gap-3 text-center">
+      <p class="text-base font-bold tracking-[0.35em] text-indigo-300/80">
+        $ cat appearances.md
+      </p>
+      <h2 class="max-w-4xl text-balance text-3xl font-extrabold leading-tight tracking-[0.03em] text-white md:text-5xl">
+        Public appearances and mentions
+      </h2>
+    </div>
 
     <CardAppareance
       img="https://i.ytimg.com/vi/Cz9I5FzG00Y/maxresdefault.jpg"

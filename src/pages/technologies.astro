@@ -5,9 +5,16 @@ import TechCard from "../components/TechCard/index.astro";
 
 <Layout>
   <div
-    class="parallax text-white min-h-screen w-screen flex-col items-center flex justify-center content-center flex-wrap"
+    class="parallax text-white min-h-screen w-screen flex flex-col items-center justify-center content-center flex-wrap gap-8 py-10"
   >
-    <p class="text-3xl my-4">> TECH STACK</p>
+    <div class="flex flex-col items-center gap-3 text-center">
+      <p class="text-base font-bold tracking-[0.35em] text-indigo-300/80">
+        $ cat techstack.md
+      </p>
+      <h2 class="text-balance text-3xl font-extrabold leading-tight tracking-[0.06em] text-white md:text-5xl">
+        Tech stack
+      </h2>
+    </div>
 
     <div
       class="grid w-full max-w-6xl grid-cols-1 gap-6 px-4 sm:grid-cols-2 xl:grid-cols-3"

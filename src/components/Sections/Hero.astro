@@ -15,13 +15,17 @@ const _ = useTranslations(locale);
   class="text-white text-4xl flex flex-col items-center justify-center h-[85vh]"
 >
   <div class="p-4 [*_&]:line parallax text-left items-start flex flex-col gap-4">
-    <code class="line opacity-0 text-lg font-black text-gray-200 bg-indigo-600"
-      ><pre> {_("hero.prompt")} </pre></code
+    <code
+      class="prompt-line flex items-center gap-1 text-lg font-black text-white bg-indigo-600 w-fit px-2"
     >
-    <code class="line opacity-0 text-lg"><pre>{_("hero.whoami")} </pre></code>
-    <aside class="line opacity-0 flex flex-col">
+      <span><pre class="text-white"> user@browser:~$ </pre></span>
+      <span class="typed-cmd text-lg font-normal text-white"></span>
+      <span class="cursor-typing text-lg text-white/70">▊</span>
+    </code>
+
+    <aside class="output-section flex flex-col">
       <code class="title font-bold text-[clamp(2.4rem,6vw,10rem)]"
-        >Marlon Hernández</code
+        >Marlón Hernández</code
       >
       <code class="title lg:font-bold leading-none whitespace-nowrap text-[clamp(2rem,5vw,2.5rem)]"
         >Frontend Developer</code
@@ -31,7 +35,7 @@ const _ = useTranslations(locale);
       </code>
     </aside>
 
-    <div class="line opacity-0 flex flex-col lg:flex-row gap-4 justify-center lg:justify-between w-full items-center">
+    <div class="links-section flex flex-col lg:flex-row gap-4 justify-center lg:justify-between w-full items-center">
       
       <aside class="flex flex-wrap gap-x-3 gap-y-2 *:hover:underline">
         <Tooltip text={_("footer.tooltip.github")}>
@@ -59,31 +63,59 @@ const _ = useTranslations(locale);
 <script>
   import gsap from "gsap";
 
-  const tl = gsap.timeline({ delay: 1 });
+  const cmdText = "> whoami";
+
+  function typeText(el: HTMLElement, text: string, duration: number) {
+    el.textContent = "";
+    return gsap.to({}, {
+      duration,
+      ease: "none",
+      onUpdate: function () {
+        const chars = Math.floor(this.progress() * text.length);
+        el.textContent = text.substring(0, chars);
+      },
+      onComplete: () => {
+        el.textContent = text;
+      },
+    });
+  }
 
   window.addEventListener("DOMContentLoaded", () => {
+    const tl = gsap.timeline({ delay: 0.8 });
+    const cmdEl = document.querySelector(".typed-cmd") as HTMLElement;
+    const cursor = document.querySelector(".cursor-typing") as HTMLElement;
+    const output = document.querySelector(".output-section") as HTMLElement;
+    const links = document.querySelector(".links-section") as HTMLElement;
+
     tl.fromTo(
-      ".line",
-      { opacity: 0 },
+      ".prompt-line",
+      { opacity: 0, x: -10 },
+      { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }
+    )
+    .add(() => typeText(cmdEl, cmdText, 0.8), "+=0.2")
+    .to({}, { duration: 0.3 })
+    .to(cursor, { opacity: 0, duration: 0.15 }, "+=0.1")
+    .fromTo(
+      output,
+      { opacity: 0, y: 20, filter: "blur(4px)" },
       {
         opacity: 1,
-        y: 20,
-        duration: 1,
-        stagger: 0.3,
+        y: 0,
+        filter: "blur(0px)",
+        duration: 0.7,
+        ease: "power3.out",
+      }
+    )
+    .fromTo(
+      links,
+      { opacity: 0, y: 15 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
         ease: "power2.out",
       },
-    )
-
-      .from(
-        ".parallax a",
-        {
-          opacity: 0,
-          y: 10,
-          duration: 0.3,
-          stagger: 0.15,
-          ease: "power2.out",
-        },
-        "-=0.7",
-      );
+      "-=0.2"
+    );
   });
 </script>

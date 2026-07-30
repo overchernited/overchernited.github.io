@@ -8,7 +8,7 @@ const { text } = Astro.props as Props;
 
 <span class="tooltip group relative inline-flex items-center justify-center">
   <span
-    class="text-center my-2 pointer-events-none absolute -top-10 left-1/2 z-50 w-max max-w-56 -translate-x-1/2 rounded-xl bg-indigo-950 px-3 py-2 text-sm font-semibold text-white opacity-0 shadow-2xl shadow-black/30 transition-all duration-200 group-hover:-top-14 group-hover:opacity-100 group-focus-within:-top-14 group-focus-within:opacity-100"
+    class="text-center my-2 pointer-events-none absolute -top-10 left-1/2 z-50 w-max max-w-none whitespace-nowrap -translate-x-1/2 rounded-xl bg-indigo-950 px-3 py-2 text-sm font-semibold text-white opacity-0 shadow-2xl shadow-black/30 transition-all duration-200 group-hover:-top-14 group-hover:opacity-100 group-focus-within:-top-14 group-focus-within:opacity-100"
     role="tooltip"
   >
     {text}

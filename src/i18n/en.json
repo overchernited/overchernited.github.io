@@ -66,7 +66,8 @@
       "advanced": "ADVANCED",
       "mid": "MID",
       "beginner": "BEGINNER"
-    }
+    },
+    "agentic": "Agentic Development"
   },
   "appearances": {
     "cat": "$ cat appearances.md",
@@ -99,7 +100,7 @@
     },
     "technologies": {
       "title": "Technologies",
-      "description": "Technologies I work with: Solid.js, React.js, Next.js, Astro.js, Tailwind CSS, Supabase and more."
+      "description": "Technologies I work with: Solid.js, React.js, Next.js, Astro.js, Tailwind CSS, Supabase and more. Also Opencode, GitHub Copilot and AI agentic tools."
     },
     "appearances": {
       "title": "Appearances",

@@ -17,7 +17,7 @@ const _ = useTranslations(locale);
   locale={locale}
 >
   <div
-    class="parallax text-white min-h-screen w-screen flex flex-col items-center justify-center content-center flex-wrap gap-8 py-10"
+    class="parallax text-white min-h-screen w-screen flex flex-col items-center gap-16 py-10"
   >
     <div class="flex flex-col items-center gap-3 text-center">
       <p class="text-base text-indigo-300/80">
@@ -31,13 +31,28 @@ const _ = useTranslations(locale);
     <div
       class="grid w-full max-w-6xl grid-cols-1 gap-6 px-4 sm:grid-cols-2 xl:grid-cols-3"
     >
-      <TechCard techname="Solid.js" rating={4} level="ADVANCED" href="https://www.solidjs.com/" locale={locale} />
-      <TechCard techname="React.js" rating={3} level="MID" href="https://react.dev/" locale={locale} />
-      <TechCard techname="Next.js" rating={3} level="MID" href="https://nextjs.org/" locale={locale} />
-      <TechCard techname="Astro.js" rating={2} level="BEGINNER" href="https://astro.build/" locale={locale} />
-      <TechCard techname="Tailwind" rating={3} level="MID" href="https://tailwindcss.com/" locale={locale} />
-      <TechCard techname="Supabase" rating={3} level="MID" href="https://supabase.com/" locale={locale} />
-      <TechCard techname="Godot" rating={2} level="BEGINNER" href="https://godotengine.org/" locale={locale} />
+      <TechCard techname="Solid.js" rating={4} level="ADVANCED" href="https://www.solidjs.com/" locale={locale} icon="solid" />
+      <TechCard techname="React.js" rating={3} level="MID" href="https://react.dev/" locale={locale} icon="react" />
+      <TechCard techname="Next.js" rating={3} level="MID" href="https://nextjs.org/" locale={locale} icon="next" />
+      <TechCard techname="Astro.js" rating={2} level="BEGINNER" href="https://astro.build/" locale={locale} icon="astro" />
+      <TechCard techname="Tailwind" rating={3} level="MID" href="https://tailwindcss.com/" locale={locale} icon="tailwind" />
+      <TechCard techname="Supabase" rating={3} level="MID" href="https://supabase.com/" locale={locale} icon="supabase" />
+      <TechCard techname="Godot" rating={2} level="BEGINNER" href="https://godotengine.org/" locale={locale} icon="godot" />
+    </div>
+
+    <div class="flex flex-col items-center gap-3 text-center">
+      <p class="text-base text-indigo-300/80">$ cat agents.md</p>
+      <h2 class="text-balance text-3xl font-extrabold leading-tight tracking-[0.06em] text-white md:text-4xl">
+        {_("technologies.agentic")}
+      </h2>
+    </div>
+
+    <div
+      class="grid w-full max-w-6xl grid-cols-1 gap-6 px-4 pb-10 sm:grid-cols-2 xl:grid-cols-3"
+    >
+      <TechCard techname="Opencode" rating={4} level="ADVANCED" href="https://opencode.ai" locale={locale} icon="opencode" />
+      <TechCard techname="GitHub Copilot" rating={2} level="BEGINNER" href="https://github.com/features/copilot" locale={locale} icon="copilot" />
+      <TechCard techname="AI Agents & Skills" rating={3} level="MID" href="https://github.com/overchernited" locale={locale} icon="agents" />
     </div>
   </div>
 </Layout>
@@ -54,7 +69,7 @@ const _ = useTranslations(locale);
       {
         autoAlpha: 1,
         duration: 0.5,
-        stagger: 0.2,
+        stagger: 0.15,
         ease: "power2.out",
         delay: 0.1,
       },

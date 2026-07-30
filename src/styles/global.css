@@ -20,6 +20,12 @@
 
 .navbar-link.active {
     @apply bg-indigo-500/15 text-indigo-300;
+    animation: nav-active-pulse 3s ease-in-out infinite;
+}
+
+@keyframes nav-active-pulse {
+    0%, 100% { box-shadow: 0 0 8px rgba(99, 102, 241, 0.1); }
+    50% { box-shadow: 0 0 18px rgba(99, 102, 241, 0.25); }
 }
 
 
@@ -58,6 +64,15 @@
     100% {
         background-position: 0% 50%;
     }
+}
+
+@keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.cursor-typing {
+    animation: cursor-blink 1s step-end infinite;
 }
 
 * {

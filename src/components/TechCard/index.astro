@@ -7,10 +7,11 @@ interface TechCard {
   rating: number;
   level: string;
   href: string;
+  icon: string;
   locale?: string;
 }
 
-const { techname, rating, level, href, locale: rawLocale } = Astro.props as TechCard;
+const { techname, rating, level, href, icon, locale: rawLocale } = Astro.props as TechCard;
 const locale = (rawLocale as Locale) || "en";
 const _ = useTranslations(locale);
 
@@ -20,7 +21,39 @@ const levelMap: Record<string, string> = {
   BEGINNER: _("technologies.level.beginner"),
 };
 const levelText = levelMap[level] || level;
+
+const iconSvgs: Record<string, string> = {
+  solid:
+    '<svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="url(#tech-grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L3 8.5L12 14L21 8.5L12 3Z" /><path d="M3 15.5L12 21L21 15.5" /><path d="M3 8.5V15.5" /><path d="M21 8.5V15.5" /></svg>',
+  react:
+    '<svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="url(#tech-grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2" /><ellipse cx="12" cy="12" rx="8" ry="3" transform="rotate(-30 12 12)" /><ellipse cx="12" cy="12" rx="8" ry="3" transform="rotate(30 12 12)" /><ellipse cx="12" cy="12" rx="8" ry="3" /></svg>',
+  next:
+    '<svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="url(#tech-grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19L12 4L21 19H3Z" /><path d="M9 19L12 11L15 19" /></svg>',
+  astro:
+    '<svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="url(#tech-grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L13.5 9L20 7.5L15 12.5L20 17.5L13.5 16L12 23L10.5 16L4 17.5L9 12.5L4 7.5L10.5 9Z" /></svg>',
+  tailwind:
+    '<svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="url(#tech-grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14C4 10 7 8 10 8C13 8 13 11 16 11C19 11 20 9 20 9" /><path d="M4 18C4 14 7 12 10 12C13 12 13 15 16 15C19 15 20 13 20 13" /></svg>',
+  supabase:
+    '<svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="url(#tech-grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21L15 3L12 12H18L9 21L12 12H6Z" /></svg>',
+  godot:
+    '<svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="url(#tech-grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L20 7V17L12 22L4 17V7L12 2Z" /><path d="M12 2V22" /><path d="M4 7L20 7" /><path d="M4 17L20 17" /></svg>',
+  opencode:
+    '<svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="url(#tech-grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="16" height="12" rx="3" /><circle cx="9" cy="11" r="1.5" fill="url(#tech-grad)" /><circle cx="15" cy="11" r="1.5" fill="url(#tech-grad)" /><path d="M9 16C10 17 12 17.5 14 16" /><path d="M8 3L12 6L16 3" /><line x1="12" y1="6" x2="12" y2="9" /></svg>',
+  copilot:
+    '<svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="url(#tech-grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="14" rx="3" /><circle cx="9" cy="10" r="1.5" fill="url(#tech-grad)" /><circle cx="15" cy="10" r="1.5" fill="url(#tech-grad)" /><path d="M8 17C9.5 18 11 18.5 13 17" /><path d="M10 3L12 5L14 3" /><path d="M7 8L9 10L7 12" /></svg>',
+  agents:
+    '<svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="url(#tech-grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C8 3 5 6 5 10C5 13 7 15 9 17V21H15V17C17 15 19 13 19 10C19 6 16 3 12 3Z" /><path d="M9 10H15" /><path d="M10 13H14" /><path d="M8 7H16" /><circle cx="11" cy="7" r="1" fill="url(#tech-grad)" /><circle cx="13" cy="10" r="1" fill="url(#tech-grad)" /><circle cx="12" cy="13" r="1" fill="url(#tech-grad)" /></svg>',
+};
 ---
+
+<svg class="h-0 w-0 absolute">
+  <defs>
+    <linearGradient id="tech-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+  </defs>
+</svg>
 
 <Tooltip text={`Go to ${href}`}>
 <a
@@ -31,13 +64,18 @@ class="card group flex w-full flex-col gap-5 rounded-3xl border border-white/10 
 >
 
   <div class="flex items-start justify-between gap-4">
-    <div class="flex flex-col gap-2">
-      <h1 class="title text-balance text-[clamp(1.35rem,3vw,2rem)] font-extrabold leading-snug tracking-[0.01em]">
-        {techname}
-      </h1>
+    <div class="flex items-center gap-3">
+      <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5">
+        <Fragment set:html={iconSvgs[icon]} />
+      </div>
+      <div class="flex flex-col gap-1">
+        <h1 class="text-balance text-[clamp(1.05rem,2.5vw,1.35rem)] font-extrabold leading-snug tracking-[0.01em]">
+          {techname}
+        </h1>
+      </div>
     </div>
     
-    <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-bold uppercase tracking-[0.35em] text-white/70">
+    <span class="shrink-0 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-bold uppercase tracking-[0.35em] text-white/70">
       {levelText}
     </span>
   </div>

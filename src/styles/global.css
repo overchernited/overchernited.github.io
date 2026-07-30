@@ -11,7 +11,15 @@
 }
 
 .navbar-link {
-    @apply hover:underline text-xl hover:text-indigo-300 font-extrabold text-gray-300 transition-colors duration-300;
+    @apply text-xl font-extrabold text-gray-300 transition-all duration-300 px-5 py-2 rounded-full cursor-pointer;
+}
+
+.navbar-link:hover {
+    @apply bg-white/5 text-white;
+}
+
+.navbar-link.active {
+    @apply bg-indigo-500/15 text-indigo-300;
 }
 
 

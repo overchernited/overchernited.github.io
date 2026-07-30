@@ -1,15 +1,37 @@
 ---
+import { useTranslations, switchLocalePath, locales, type Locale } from "../../i18n";
+
+export interface Props {
+  locale?: string;
+}
+
+const { locale: rawLocale } = Astro.props;
+const locale = (rawLocale as Locale) || "en";
+const _ = useTranslations(locale);
 const currentPath = Astro.url.pathname;
-const base = import.meta.env.BASE_URL;
+const otherLocales = locales.filter((l) => l !== locale);
 ---
 
 <nav class="hidden lg:flex fixed z-100 w-full justify-center items-center mt-4">
   <div class="flex items-center gap-1 rounded-full bg-indigo-950/20 backdrop-blur-2xl border border-white/[0.06] px-4 py-2">
-    <a href="/" class={`navbar-link ${currentPath === '/' ? 'active' : ''}`}>MaHe</a>
-    <a href={`${base}about`} class={`navbar-link ${currentPath.includes('about') ? 'active' : ''}`}>About</a>
-    <a href={`${base}appearances`} class={`navbar-link ${currentPath.includes('appearances') ? 'active' : ''}`}>Appearances</a>
-    <a href={`${base}projects`} class={`navbar-link ${currentPath.includes('projects') ? 'active' : ''}`}>Projects</a>
-    <a href={`${base}technologies`} class={`navbar-link ${currentPath.includes('technologies') ? 'active' : ''}`}>Technologies</a>
+    <a href={`/${locale}`} class={`navbar-link ${currentPath === '/' + locale || currentPath === '/' + locale + '/' ? 'active' : ''}`}>MaHe</a>
+    <a href={`/${locale}/about`} class={`navbar-link ${currentPath.includes('about') ? 'active' : ''}`}>{_("nav.about")}</a>
+    <a href={`/${locale}/appearances`} class={`navbar-link ${currentPath.includes('appearances') ? 'active' : ''}`}>{_("nav.appearances")}</a>
+    <a href={`/${locale}/projects`} class={`navbar-link ${currentPath.includes('projects') ? 'active' : ''}`}>{_("nav.projects")}</a>
+    <a href={`/${locale}/technologies`} class={`navbar-link ${currentPath.includes('technologies') ? 'active' : ''}`}>{_("nav.technologies")}</a>
+    <div class="locale-dropdown relative">
+      <button class="navbar-link uppercase font-bold text-indigo-300 hover:text-indigo-200 flex items-center gap-1 cursor-pointer">
+        {locale}
+        <svg class="w-3 h-3 mt-0.5 transition-transform" viewBox="0 0 12 12" fill="none">
+          <path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="locale-menu absolute top-full right-0 mt-2 rounded-xl bg-indigo-950/90 backdrop-blur-2xl border border-white/[0.06] py-1 min-w-[80px] opacity-0 invisible transition-all duration-200 translate-y-1">
+        {otherLocales.map((l) => (
+          <a href={switchLocalePath(currentPath, l)} class="block px-4 py-2 text-sm font-bold uppercase tracking-wider text-white/70 hover:text-white hover:bg-white/5 transition-colors">{l}</a>
+        ))}
+      </div>
+    </div>
   </div>
 </nav>
 
@@ -36,29 +58,48 @@ const base = import.meta.env.BASE_URL;
   class="fixed inset-0 z-120 bg-indigo-950/30 backdrop-blur-2xl flex flex-col items-center justify-center gap-8 translate-x-full transition-transform duration-300 md:hidden"
 >
 
-  <a href="/" class={`navbar-link text-2xl ${currentPath === '/' ? 'active' : ''}`}>MaHe</a>
+  <a href={`/${locale}`} class={`navbar-link text-2xl ${currentPath === '/' + locale || currentPath === '/' + locale + '/' ? 'active' : ''}`}>MaHe</a>
   <a
-    href=`${base}about`
+    href={`/${locale}/about`}
     class={`navbar-link text-2xl ${currentPath.includes('about') ? 'active' : ''}`}
-    onclick="closeMenu()">About</a
+    onclick="closeMenu()">{_("nav.about")}</a
   >
   <a
-    href=`${base}projects`
+    href={`/${locale}/projects`}
     class={`navbar-link text-2xl ${currentPath.includes('projects') ? 'active' : ''}`}
-    onclick="closeMenu()">Projects</a
+    onclick="closeMenu()">{_("nav.projects")}</a
   >
   <a
-    href=`${base}appearances`
+    href={`/${locale}/appearances`}
     class={`navbar-link text-2xl ${currentPath.includes('appearances') ? 'active' : ''}`}
-    onclick="closeMenu()">Appearances</a
+    onclick="closeMenu()">{_("nav.appearances")}</a
   >
   <a
-    href=`${base}technologies`
+    href={`/${locale}/technologies`}
     class={`navbar-link text-2xl ${currentPath.includes('technologies') ? 'active' : ''}`}
-    onclick="closeMenu()">Technologies</a
+    onclick="closeMenu()">{_("nav.technologies")}</a
   >
+  <div class="flex gap-4">
+    {locales.map((l) => (
+      <a
+        href={l === locale ? "#" : switchLocalePath(currentPath, l)}
+        class:list={["navbar-link text-2xl uppercase font-bold", l === locale ? "text-indigo-300 cursor-default" : "text-white/50 hover:text-white"]}
+        onclick={l !== locale ? "closeMenu()" : undefined}
+      >{l}</a>
+    ))}
+  </div>
 </div>
-  
+
+<style>
+  .locale-dropdown:hover .locale-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .locale-dropdown:hover svg {
+    transform: rotate(180deg);
+  }
+</style>
 
 <script>
   declare global {
@@ -68,7 +109,6 @@ const base = import.meta.env.BASE_URL;
   }
 
   import gsap from "gsap";
-
 
   const btn = document.getElementById("hamburger-btn");
   const menu = document.getElementById("mobile-menu");
@@ -98,4 +138,26 @@ const base = import.meta.env.BASE_URL;
       isOpen ? closeMenu() : openMenu();
     });
   }
+
+  document.addEventListener("click", (e) => {
+    const dd = document.querySelector(".locale-dropdown");
+    const menu = dd?.querySelector(".locale-menu");
+    if (!dd || !menu) return;
+    if (!dd.contains(e.target as Node)) {
+      menu.classList.remove("opacity-100", "visible", "translate-y-0");
+      menu.classList.add("opacity-0", "invisible", "translate-y-1");
+    }
+  });
+
+  document.querySelector(".locale-dropdown > button")?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const menu = document.querySelector(".locale-menu");
+    if (!menu) return;
+    menu.classList.toggle("opacity-100");
+    menu.classList.toggle("visible");
+    menu.classList.toggle("translate-y-0");
+    menu.classList.toggle("opacity-0");
+    menu.classList.toggle("invisible");
+    menu.classList.toggle("translate-y-1");
+  });
 </script>

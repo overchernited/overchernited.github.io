@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import ProjectSlider from "../../components/ProjectSlider.astro";
 import projectsData from "../../data/projects.json";
 import Helpit from "../../components/projects/content/helpit.astro";
 import Liftio from "../../components/projects/content/liftio.astro";
@@ -21,6 +22,7 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { title, description, icon, tags } = project;
 const Content = componentMap[project.id] || null;
+const otherProjects = projectsData.projects.filter((p) => p.id !== project.id);
 ---
 
 <Layout title={title} description={description}>
@@ -55,13 +57,15 @@ const Content = componentMap[project.id] || null;
       </div>
     </section>
 
-    <section class="w-full max-w-4xl px-6 mt-10 mb-32">
+    <section class="w-full max-w-4xl px-6 mb-[5%]">
       {Content ? (
         <Content />
       ) : (
         <p class="text-center text-gray-500">No content component found for this project.</p>
       )}
     </section>
+
+    {otherProjects.length > 0 && <ProjectSlider projects={otherProjects} />}
   </main>
 </Layout>
 

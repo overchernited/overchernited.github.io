@@ -12,14 +12,14 @@ const { img, title, description, tags } = Astro.props as Props;
 import Tooltip from "../Tooltip/index.astro";
 ---
 
-<div class="flex h-full flex-col items-center overflow-hidden rounded-3xl text-white">
+<div class="flex w-full h-full flex-col items-center overflow-hidden rounded-3xl text-white">
   <img
     src={img}
     alt={`${title} image`}
     class="h-35 w-35 my-2 object-cover transition-transform duration-500"
   />
 
-  <div class="flex flex-1 flex-col gap-5 p-5 md:p-6 bg-white/5 rounded-2xl">
+  <div class="flex w-full flex-1 flex-col gap-5 p-5 md:p-6 bg-white/5 rounded-2xl">
     <div class="flex items-start justify-between gap-4">
       <div class="flex flex-col gap-2">
         <p

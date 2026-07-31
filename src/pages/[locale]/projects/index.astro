@@ -22,10 +22,10 @@ const _ = useTranslations(locale);
   footer={false}
 >
   <!-- Mobile: unified card layout -->
-  <div class="grid w-full grid-cols-1 gap-6 p-4 sm:grid-cols-2 lg:hidden">
+  <div class="grid w-full grid-cols-1 gap-4 px-4 py-5 sm:grid-cols-2 lg:hidden">
     {
       projects.map((p) => (
-        <a href={`/${locale}/projects/${p.id}`} class="block w-full max-w-xl">
+        <a href={`/${locale}/projects/${p.id}`} class="block h-[24rem] w-full">
           <ProjectCardContent
             img={p.icon}
             title={p.title}
@@ -39,6 +39,12 @@ const _ = useTranslations(locale);
 
   <!-- Desktop: draggable board -->
   <div id="board" class="hidden md:relative md:overflow-hidden md:w-screen md:block md:h-dvh">
+    <p
+      class="drag-hint pointer-events-none absolute top-24 left-1/2 z-10 -translate-x-1/2 select-none rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white/60 backdrop-blur"
+    >
+      <span class="mr-2 inline-block" aria-hidden="true">↔</span>
+      {_("projects.dragHint")}
+    </p>
     {
       projects.map((p) => (
         <ProjectCard
@@ -83,6 +89,14 @@ const _ = useTranslations(locale);
           delay: 0.2,
         },
       );
+
+      gsap.to(".drag-hint", {
+        y: 6,
+        duration: 1.2,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut",
+      });
     });
 
     Draggable.create(".card", {

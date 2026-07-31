@@ -37,6 +37,7 @@
   "projects": {
     "title": "Proyectos",
     "description": "Explora los proyectos de Marlon Hernández: Liftio, KAT, Helpit y más.",
+    "dragHint": "Arrastra los proyectos para explorar",
     "more": "Más proyectos",
     "back": "← Volver",
     "content": {

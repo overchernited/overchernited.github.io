@@ -76,6 +76,80 @@
     "articleFrom": "OIT | Senatic",
     "articleDescription": "A sus 17 años, Marlon Santiago Hernández López ya mira al mundo desde el código. La tecnología no es solo su pasión temprana, sino su lenguaje para transformar realidades."
   },
+  "cv": {
+    "title": "Resume",
+    "description": "Downloadable resume of Marlon Hernández, frontend developer from Bogotá, Colombia.",
+    "role": "Frontend Developer",
+    "download": "Download PDF",
+    "printHint": "Print → Save as PDF",
+    "contact": {
+      "location": "Bogotá, Colombia",
+      "github": "github.com/overchernited"
+    },
+    "summary": {
+      "title": "Profile",
+      "text": "Frontend developer from Colombia passionate about building useful, intuitive and visually engaging web experiences. I love turning complex ideas into simple solutions through clean code, good design and constant learning."
+    },
+    "skills": {
+      "title": "Skills",
+      "frontend": "Solid.js, React.js, Next.js, Astro.js, Tailwind CSS",
+      "backend": "Supabase, Firebase, Node.js, Express.js, Flask",
+      "tools": "Opencode, GitHub Copilot, AI Agents & Skills, Godot, Git"
+    },
+    "experience": {
+      "title": "Experience",
+      "hackathon": {
+        "role": "Hackathon Participant",
+        "org": "Hackathon 4 Future — SENA",
+        "date": "2024",
+        "points": [
+          "Built HELPIT, a mental health social network, as my hackathon project.",
+          "Learned rapid prototyping, teamwork and the full product cycle under time pressure."
+        ]
+      },
+      "nestle": {
+        "role": "Invited Participant",
+        "org": "NESTLÉ — Reunión de Jóvenes Pacífico",
+        "date": "2025",
+        "points": [
+          "Invited for my work on HELPIT to a youth event held at the Marriott Bonvoy hotel (3 days, 2 nights).",
+          "Presented how technology can be built with social purpose to young leaders."
+        ]
+      },
+      "freelance": {
+        "role": "Developer — SaaS MVP",
+        "org": "Freelance project for coaches",
+        "date": "2025",
+        "points": [
+          "Developed a SaaS MVP for personal coaches covering frontend, backend and database.",
+          "Project was paused by the client before completion."
+        ]
+      }
+    },
+    "projects": {
+      "title": "Projects",
+      "items": [
+        { "name": "HELPIT", "desc": "Mental health social network focused on emotional wellbeing." },
+        { "name": "Liftio", "desc": "Personalized fitness coaching web app." },
+        { "name": "KAT", "desc": "Embedded terminal built with Electron and JavaScript." }
+      ]
+    },
+    "education": {
+      "title": "Education",
+      "items": [
+        { "title": "Professional Technician in Software Development", "institution": "Fundación Universitaria Compensar", "date": "2026 – Present" },
+        { "title": "Application and Cloud Services Development Technician", "institution": "Servicio Nacional de Aprendizaje (SENA)", "date": "2023 – 2025" }
+      ]
+    },
+    "recognition": {
+      "title": "Recognition",
+      "text": "Featured by the International Labour Organization (OIT / SENATIC) as a young programmer who transforms his passion for technology into social purpose."
+    },
+    "languages": {
+      "title": "Languages",
+      "text": "Spanish (native) · English (professional)"
+    }
+  },
   "footer": {
     "copyright": "Marlon Hernández 2026",
     "tooltip": {

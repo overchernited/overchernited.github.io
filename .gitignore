@@ -18,6 +18,8 @@ pnpm-workspace.yaml
 .github
 .cursor
 .impeccable
+PRODUCT.md
+AGENTS.md
 
 
 # environment variables

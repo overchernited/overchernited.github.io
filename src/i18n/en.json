@@ -43,9 +43,22 @@
     "content": {
       "helpit": {
         "what": "🚀 What is it",
+        "whatBody": "HelpIt was our proposal for the HACK4FUTURE SENA hackathon in the Inclusion & Diversity category. It's an anonymous mental health support and guidance forum where people can share their thoughts and vent, making their situations visible and receiving help from others who are going through something similar — while also providing helplines and mental health resources. Built by Marlon Hernández & Carlos Rivera.",
         "problem": "🧠 Problem",
+        "problemBody": "Mental health topics often meet hostility online, and people stay silent because they fear being judged. Existing spaces rarely feel safe or welcoming enough for someone to open up about what they're going through.",
         "solution": "💡 Solution",
-        "demo": "🎥 Demo"
+        "solutionBody": "HelpIt integrates different features into the forum to ease the hostility that mental health can bring:",
+        "features": [
+          "AI assistant: Flubber, a virtual mascot that helps you anywhere on the page — teaching you how to use it and acting as a counselor with helplines and resources (without replacing professional psychological help).",
+          "Anonymity: an anonymous forum with auto-generated names and passwords, easy 3-step signup, and QR codes to log in quickly on new devices — freeing you from the pressure of being known.",
+          "Gamification: levels, XP and achievements reward interaction, creating healthy competition that, in turn, saves lives.",
+          "Accessible settings: dark, light and high-contrast themes for people with reduced vision.",
+          "Interactions: posts, comments and likes across categories that best fit your thoughts, with XP and achievements as incentives.",
+          "Notifications: find out as soon as you log in whether you received a new interaction."
+        ],
+        "demo": "🎥 Demo",
+        "demoBody": "Try the live demo:",
+        "demoLink": "https://helpit-eight.vercel.app"
       },
       "liftio": {
         "what": "🚀 What is it",
@@ -55,9 +68,23 @@
       },
       "kat": {
         "what": "🚀 What is it",
+        "whatBody": "KAT (Keyboard Assisted Terminal) is a sleek, customizable web-embedded terminal built with Vanilla JavaScript, Electron.js and pure HTML/CSS. It runs a real shell in the background while offering a cleaner interface, custom keybindings, sound effects and CSS-injected themes — designed to feel familiar but enhanced, giving you power and clarity in one beautiful terminal.",
         "problem": "🧠 Problem",
+        "problemBody": "Default terminals are powerful but clunky: cluttered interfaces, painful customization and little feedback. KAT keeps the raw power of a real shell and wraps it in a clean, distraction-free experience.",
         "solution": "💡 Solution",
-        "demo": "🎥 Demo"
+        "solutionBody": "Customization without the complexity:",
+        "features": [
+          "Themes via CSS injection: changing class names or CSS variables restyles the terminal in seconds. Drop a .css file into /themes and activate it from the settings menu.",
+          "Custom sounds: unique sound feedback for key events makes the experience more immersive.",
+          "Keyboard shortcuts: custom keybindings and command macros to boost your productivity.",
+          "Modular system: simple module installation and management for expanding functionality.",
+          "Log compatibility: displays output from C#, Python, Bash and more — ideal for tailing logs or running scripts.",
+          "CMD compatible: full compatibility with Windows' CMD environment.",
+          "Minimal and clean UI: designed to keep distractions out of the way and focus on what matters."
+        ],
+        "demo": "🎥 Demo",
+        "demoBody": "No frameworks. No bloat. Just raw power. Clone it, install it and run it:",
+        "demoLink": "https://github.com/overchernited/KAT"
       }
     }
   },

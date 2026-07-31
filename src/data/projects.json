@@ -7,7 +7,7 @@
       "top": 400,
       "left": 100,
       "icon": "/images/helpit.png",
-      "tags": ["fitness", "web"]
+      "tags": ["Mental Health", "Hackathon", "SolidStart", "Supabase"]
     },
     {
       "id": "liftio",
@@ -16,7 +16,7 @@
       "top": 100,
       "left": 400,
       "icon": "/images/liftio.png",
-      "tags": ["fitness", "web"]
+      "tags": ["Fitness", "Web App", "Solid.js", "Supabase"]
     },
     {
       "id": "kat",
@@ -25,7 +25,7 @@
       "top": 500,
       "left": 600,
       "icon": "/images/kat.png",
-      "tags": ["fitness", "web"]
+      "tags": ["Terminal", "Developer Tool", "Electron", "Vanilla JS"]
     }
   ]
 }

@@ -43,9 +43,22 @@
     "content": {
       "helpit": {
         "what": "🚀 Qué es",
+        "whatBody": "HelpIt fue nuestra propuesta para la hackathon HACK4FUTURE SENA en la categoría inclusión y diversidad. Es un foro anónimo de ayuda y orientación mental donde las personas pueden contar sus pensamientos y desahogarse, visibilizando sus situaciones y recibiendo ayuda de otras personas que estén interesadas en hacerlo o pasen por algo similar — facilitando además líneas de ayuda y recursos de salud mental. Creado por Marlon Hernández & Carlos Rivera.",
         "problem": "🧠 Problema",
+        "problemBody": "Los temas de salud mental suelen encontrarse con hostilidad en línea, y las personas callan por miedo a ser juzgadas. Los espacios existentes rara vez se sienten seguros o acogedores para abrirse.",
         "solution": "💡 Solución",
-        "demo": "🎥 Demo"
+        "solutionBody": "HelpIt integra diferentes características en el foro para mitigar la hostilidad que puede presentar la salud mental:",
+        "features": [
+          "Asistente IA: Flubber, nuestra mascota virtual, te ayuda en cualquier momento de la página — enseñándote a usarla y actuando como consejero con líneas de atención y recursos (sin reemplazar la ayuda psicológica profesional).",
+          "Anonimato: un foro anónimo con nombres y contraseñas autogeneradas, registro fácil en 3 pasos y códigos QR para iniciar sesión rápido en nuevos dispositivos — liberándote de la presión de ser conocido.",
+          "Gamificación: un sistema de niveles, experiencia y logros recompensa la interacción, generando una competencia sana que, a su vez, salva vidas.",
+          "Ajustes accesibles: temas oscuro, claro y de alto contraste para personas con visibilidad reducida.",
+          "Interacciones: publicaciones, comentarios y likes en categorías que mejor se ajusten a tu pensamiento, con experiencia y logros como incentivos.",
+          "Notificaciones: sabes cada vez que entras si has recibido alguna nueva interacción."
+        ],
+        "demo": "🎥 Demo",
+        "demoBody": "Prueba la demo en vivo:",
+        "demoLink": "https://helpit-eight.vercel.app"
       },
       "liftio": {
         "what": "🚀 Qué es",
@@ -55,9 +68,23 @@
       },
       "kat": {
         "what": "🚀 Qué es",
+        "whatBody": "KAT (Keyboard Assisted Terminal) es una terminal embebida en web, elegante y personalizable, construida con JavaScript Vanilla, Electron.js y HTML/CSS puro. Ejecuta un shell real en segundo plano mientras ofrece una interfaz más limpia, atajos de teclado personalizados, efectos de sonido y temas inyectados por CSS — diseñada para sentirse familiar pero mejorada, dándote poder y claridad en una sola terminal.",
         "problem": "🧠 Problema",
+        "problemBody": "Las terminales por defecto son potentes pero torpes: interfaces desordenadas, personalización dolorosa y poca retroalimentación. KAT conserva el poder crudo de un shell real y lo envuelve en una experiencia limpia y sin distracciones.",
         "solution": "💡 Solución",
-        "demo": "🎥 Demo"
+        "solutionBody": "Personalización sin complejidad:",
+        "features": [
+          "Temas mediante inyección CSS: cambiar nombres de clase o variables CSS reestiliza la terminal en segundos. Suelta un archivo .css en /themes y actívalo desde el menú de ajustes.",
+          "Sonidos personalizados: una retroalimentación sonora única para eventos clave hace la experiencia más inmersiva.",
+          "Atajos de teclado: keybindings personalizados y macros de comandos para aumentar tu productividad.",
+          "Sistema modular: instalación y gestión simple de módulos para ampliar funcionalidades.",
+          "Compatibilidad con logs: muestra a la perfección la salida de C#, Python, Bash y más — ideal para ver logs o ejecutar scripts.",
+          "Compatible con CMD: compatibilidad total con el entorno CMD de Windows.",
+          "UI mínima y limpia: diseñada para apartar las distracciones y centrarte en lo importante."
+        ],
+        "demo": "🎥 Demo",
+        "demoBody": "Sin frameworks. Sin bloat. Poder puro. Clónalo, instálalo y ejecútalo:",
+        "demoLink": "https://github.com/overchernited/KAT"
       }
     }
   },

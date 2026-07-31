@@ -1,6 +1,5 @@
 ---
 import Title from "../Title.astro";
-import Box from "../Box.astro";
 import { useTranslations, type Locale } from "../../../i18n";
 
 export interface Props {
@@ -11,38 +10,51 @@ const { locale: rawLocale } = Astro.props;
 const locale = (rawLocale as Locale) || "en";
 const _ = useTranslations(locale);
 const t = (key: string) => _(`projects.content.helpit.${key}`);
+const features = _("projects.content.helpit.features") as string[];
 ---
 
 <section class="flex flex-col gap-8">
   <div>
     <Title>{t("what")}</Title>
     <p class="mt-4 text-lg leading-8 text-slate-300">
-      Helpit es una red social enfocada en salud mental...
+      {t("whatBody")}
     </p>
   </div>
 
   <div>
     <Title>{t("problem")}</Title>
     <p class="mt-4 text-lg leading-8 text-slate-300">
-      Muchas personas...
+      {t("problemBody")}
     </p>
   </div>
 
   <div>
     <Title>{t("solution")}</Title>
     <p class="mt-4 text-lg leading-8 text-slate-300">
-      Creamos una plataforma...
+      {t("solutionBody")}
     </p>
+    <ul class="mt-4 flex flex-col gap-3 text-lg leading-8 text-slate-300">
+      {features.map((feature) => (
+        <li>
+          <span class="mr-2 text-indigo-400" aria-hidden="true">•</span>
+          {feature}
+        </li>
+      ))}
+    </ul>
   </div>
 
   <div>
     <Title>{t("demo")}</Title>
     <p class="mt-4 text-lg leading-8 text-slate-300">
-      Demo content...
+      {t("demoBody")}
     </p>
+    <a
+      href={t("demoLink")}
+      target="_blank"
+      rel="noopener"
+      class="gradient-button mt-6"
+    >
+      {t("demoLink")}
+    </a>
   </div>
-
-  <Box>
-    <p class="text-lg leading-8 text-slate-300">Hola asdasd</p>
-  </Box>
 </section>

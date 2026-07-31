@@ -26,13 +26,16 @@ const clamped = projects.slice(0, 4);
 <section class="w-full max-w-6xl px-6 mb-32">
   <h2 class="title text-center text-3xl font-extrabold mb-10">{_("projects.more")}</h2>
   <div class="flex-col md:flex-row flex justify-center items-center gap-6">
+    
     {clamped.map((p) => (
-        <ProjectCardContent
-            img={p.icon}
-            title={p.title}
-            description={p.description}
-            tags={p.tags}
-          />
+      <a href={`/${locale}/projects/${p.id}`} class="flex flex-wrap justify-center gap-6">
+      <ProjectCardContent
+      img={p.icon}
+      title={p.title}
+      description={p.description}
+      tags={p.tags}
+      />
+    </a>
     ))}
   </div>
 </section>

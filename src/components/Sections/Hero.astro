@@ -45,10 +45,16 @@ const _ = useTranslations(locale);
           <a href={`/${locale}/cv`} class="text-xl">{_("hero.resume")}</a>
         </Tooltip>
         <Tooltip text={_("footer.tooltip.linkedin")}>
-          <a class="text-xl">{_("hero.linkedin")}</a>
+          <a
+            href="https://www.linkedin.com/in/marlon-santiago-hern%C3%A1ndez-l%C3%B3pez-126024271/"
+            class="text-xl"
+            target="_blank"
+            rel="noopener"
+          >{_("hero.linkedin")}</a
+          >
         </Tooltip>
         <Tooltip text={_("footer.tooltip.gmail")}>
-          <a class="text-xl">{_("hero.gmail")}</a>
+          <a href="mailto:mmarlon.ssantiago@gmail.com" class="text-xl">{_("hero.gmail")}</a>
         </Tooltip>
       </aside>
 

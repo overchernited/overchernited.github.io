@@ -1,5 +1,7 @@
 ---
 import Navbar from "../components/Navbar/index.astro";
+import Pill from "../components/Pill/index.astro";
+import Tooltip from "../components/Tooltip/index.astro";
 import "../styles/global.css";
 import { detectLocale, useTranslations, switchLocalePath, defaultLocale } from "../i18n";
 
@@ -30,6 +32,7 @@ const canonical = canonicalURL.toString().split("?")[0];
 const otherLocale = locale === "en" ? "es" : "en";
 const otherPath = switchLocalePath(Astro.url.pathname, otherLocale);
 const base = import.meta.env.BASE_URL;
+const techStack = ["Astro", "Tailwind CSS", "GSAP", "Lenis", "JavaScript", "opencode", "GitHub Copilot"];
 ---
 
 <!doctype html>
@@ -98,10 +101,22 @@ const base = import.meta.env.BASE_URL;
           <a href={`/${locale}/technologies`}>{_("nav.technologies")}</a>
         </div>
         <div class="*:hover:underline">
-          <a>github</a>
+          <a href="https://github.com/overchernited" target="_blank" rel="noopener">github</a>
           <a href={`/${locale}/cv`}>cv</a>
-          <a>linkedin</a>
-          <a>gmail</a>
+          <a
+            href="https://www.linkedin.com/in/marlon-santiago-hern%C3%A1ndez-l%C3%B3pez-126024271/"
+            target="_blank"
+            rel="noopener"
+          >linkedin</a
+          >
+          <Tooltip text={_("footer.tooltip.gmail")}>
+            <a href="mailto:mmarlon.ssantiago@gmail.com">gmail</a>
+          </Tooltip>
+        </div>
+        <div class="flex max-w-3xl flex-wrap justify-center gap-2">
+          {techStack.map((tech) => (
+            <Pill>{tech}</Pill>
+          ))}
         </div>
       </footer>
     )}

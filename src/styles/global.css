@@ -124,3 +124,20 @@ body::after {
     background-size: 30px 30px;
     pointer-events: none;
 }
+
+@page {
+    size: letter;
+    margin: 12mm 14mm;
+}
+
+@media print {
+    html,
+    body {
+        background: #ffffff;
+    }
+
+    body::before,
+    body::after {
+        display: none;
+    }
+}

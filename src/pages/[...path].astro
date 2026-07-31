@@ -6,6 +6,8 @@ export function getStaticPaths() {
     "projects",
     "appearances",
     "technologies",
+    "cv",
+    "resume",
     ...projects.map((p) => `projects/${p}`),
   ];
   return legacyPaths.map((path) => ({

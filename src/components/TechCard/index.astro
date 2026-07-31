@@ -1,6 +1,7 @@
 ---
 import Tooltip from "../Tooltip/index.astro";
 import { useTranslations, type Locale } from "../../i18n";
+import { cn } from "../../utils";
 
 interface TechCard {
   techname: string;
@@ -83,7 +84,7 @@ class="card group flex w-full flex-col gap-5 rounded-3xl border border-white/10 
   <div class="flex items-center gap-2 text-indigo-300">
     {
       Array.from({ length: 5 }).map((_, index) => (
-        <span class:list={["text-lg leading-none transition-colors", index < rating ? "text-indigo-300" : "text-white/20"]}>
+        <span class={cn("text-lg leading-none transition-colors", index < rating ? "text-indigo-300" : "text-white/20")}>
           ●
         </span>
       ))

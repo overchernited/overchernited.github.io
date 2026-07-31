@@ -10,7 +10,7 @@ Live at [overchernited.github.io](https://overchernited.github.io) · Bilingual 
 - **Tailwind CSS v4** — utility-first styling with zero config file. Yes, we live on the edge and it's fine.
 - **GSAP** — animations that make the default scrollbar feel inadequate.
 - **Lenis** — buttery smooth scrolling for people who can't stand default scrolling.
-- **JavaScript / TypeScript** — responsible for approximately 100% of the interactivity here.
+- **TypeScript** — responsible for approximately 100% of the interactivity here.
 
 ## Features
 
@@ -42,4 +42,4 @@ src/
 
 ## Credits
 
-Built with [Astro](https://astro.build) and powered in part by **opencode** and **GitHub Copilot** — AI pair programmers that refactor your code and never steal your fries.
+Built with [Astro](https://astro.build) and powered in part by **opencode** and **GitHub Copilot**.

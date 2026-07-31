@@ -1,0 +1,49 @@
+---
+interface Props {
+  title: string;
+  hint: string;
+  downloadLabel: string;
+  langLabel: string;
+  langHref: string;
+}
+
+const { title, hint, downloadLabel, langLabel, langHref } = Astro.props;
+---
+
+<div
+  class="flex w-full max-w-[800px] flex-wrap items-center justify-between gap-4 print:hidden"
+>
+  <div>
+    <p class="text-[1.05rem] font-extrabold text-slate-200">{title}</p>
+    <p class="mt-0.5 text-xs text-slate-400">{hint}</p>
+  </div>
+  <div class="flex items-center gap-3">
+    <a
+      href={langHref}
+      class="inline-flex min-w-10 items-center justify-center rounded-xl border border-white/15 px-3 py-2 text-sm font-extrabold uppercase text-slate-200 transition-colors hover:border-indigo-400 hover:text-indigo-300"
+    >
+      {langLabel}
+    </a>
+    <button
+      onclick="window.print()"
+      class="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 px-[18px] py-2.5 text-sm font-extrabold text-[#0f0925] transition hover:scale-[1.02] hover:brightness-110"
+    >
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      {downloadLabel}
+    </button>
+  </div>
+</div>

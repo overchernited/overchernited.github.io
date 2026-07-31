@@ -1,0 +1,103 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import CvToolbar from "../../components/CV/CvToolbar.astro";
+import CvPaper from "../../components/CV/CvPaper.astro";
+import CvHeader from "../../components/CV/CvHeader.astro";
+import CvSection from "../../components/CV/CvSection.astro";
+import CvEntry from "../../components/CV/CvEntry.astro";
+import CvLine from "../../components/CV/CvLine.astro";
+import CvParagraph from "../../components/CV/CvParagraph.astro";
+import {
+  useTranslations,
+  type Locale,
+  locales,
+  switchLocalePath,
+} from "../../i18n";
+
+export async function getStaticPaths() {
+  return locales.map((locale) => ({ params: { locale } }));
+}
+
+const { locale } = Astro.params as { locale: Locale };
+const _ = useTranslations(locale);
+const t = (key: string) => _(`cv.${key}`);
+const otherLocale = locale === "en" ? "es" : "en";
+const otherPath = switchLocalePath(Astro.url.pathname, otherLocale);
+---
+
+<Layout title={t("title")} description={t("description")} locale={locale}>
+  <main
+    class="flex flex-col items-center gap-6 px-4 pt-[110px] pb-16 print:gap-0 print:p-0"
+  >
+    <CvToolbar
+      title={`Marlón Hernández — ${t("title")}`}
+      hint={t("printHint")}
+      downloadLabel={t("download")}
+      langLabel={otherLocale}
+      langHref={otherPath}
+    />
+
+    <CvPaper>
+      <CvHeader
+        name="Marlón Hernández"
+        role={t("role")}
+        contact={`${t("contact.location")} · ${t("contact.github")}`}
+      />
+
+      <CvSection title={t("summary.title")}>
+        <CvParagraph text={t("summary.text")} />
+      </CvSection>
+
+      <CvSection title={t("skills.title")}>
+        <CvLine label="Frontend" value={t("skills.frontend")} />
+        <CvLine label="Backend &amp; Data" value={t("skills.backend")} />
+        <CvLine label="Tools &amp; AI" value={t("skills.tools")} />
+      </CvSection>
+
+      <CvSection title={t("experience.title")}>
+        <CvEntry
+          title={`${t("experience.hackathon.role")} — ${t("experience.hackathon.org")}`}
+          date={t("experience.hackathon.date")}
+          points={[t("experience.hackathon.points.0"), t("experience.hackathon.points.1")]}
+        />
+        <CvEntry
+          title={`${t("experience.nestle.role")} — ${t("experience.nestle.org")}`}
+          date={t("experience.nestle.date")}
+          points={[t("experience.nestle.points.0"), t("experience.nestle.points.1")]}
+        />
+        <CvEntry
+          title={`${t("experience.freelance.role")} — ${t("experience.freelance.org")}`}
+          date={t("experience.freelance.date")}
+          points={[t("experience.freelance.points.0"), t("experience.freelance.points.1")]}
+        />
+      </CvSection>
+
+      <CvSection title={t("projects.title")}>
+        <CvLine label="HELPIT" value={t("projects.items.0.desc")} join=" — " />
+        <CvLine label="Liftio" value={t("projects.items.1.desc")} join=" — " />
+        <CvLine label="KAT" value={t("projects.items.2.desc")} join=" — " />
+      </CvSection>
+
+      <CvSection title={t("education.title")}>
+        <CvEntry
+          title={t("education.items.0.title")}
+          org={t("education.items.0.institution")}
+          date={t("education.items.0.date")}
+        />
+        <CvEntry
+          title={t("education.items.1.title")}
+          org={t("education.items.1.institution")}
+          date={t("education.items.1.date")}
+        />
+      </CvSection>
+
+      <CvSection title={t("languages.title")}>
+        <CvParagraph text={t("languages.text")} />
+      </CvSection>
+
+      <CvSection title={t("recognition.title")}>
+        <CvParagraph text={t("recognition.text")} />
+      </CvSection>
+    </CvPaper>
+  </main>
+</Layout>

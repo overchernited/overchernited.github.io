@@ -1,0 +1,15 @@
+---
+interface Props {
+  label: string;
+  value: string;
+  join?: string;
+}
+
+const { label, value, join = ": " } = Astro.props;
+---
+
+<p
+  class="my-1 text-[13.5px] leading-snug text-slate-600 print:my-0.5 print:text-[11.5px]"
+>
+  <strong class="font-bold text-slate-900">{label}</strong>{join}{value}
+</p>

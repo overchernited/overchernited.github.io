@@ -1,0 +1,41 @@
+---
+interface Props {
+  title: string;
+  org?: string;
+  date?: string;
+  points?: string[];
+}
+
+const { title, org, date, points = [] } = Astro.props;
+---
+
+<div class="mb-4 break-inside-avoid print:mb-2.5">
+  <div class="flex items-baseline justify-between gap-3">
+    <div>
+      <p class="text-[14.5px] font-bold text-slate-900 print:text-[12.5px]">
+        {title}
+      </p>
+      {org && (
+        <p class="mt-0.5 text-[13px] font-semibold text-indigo-600 print:text-[11px]">
+          {org}
+        </p>
+      )}
+    </div>
+    {date && (
+      <p class="text-xs font-semibold whitespace-nowrap text-slate-500 print:text-[10.5px]">
+        {date}
+      </p>
+    )}
+  </div>
+  {points.length > 0 && (
+    <ul class="mt-2 list-disc pl-4 print:mt-1 print:pl-3.5">
+      {points.map((point) => (
+        <li
+          class="mb-1 text-[13.5px] leading-relaxed text-slate-600 print:mb-0.5 print:text-[11.5px] print:leading-snug"
+        >
+          {point}
+        </li>
+      ))}
+    </ul>
+  )}
+</div>

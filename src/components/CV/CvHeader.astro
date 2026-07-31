@@ -1,0 +1,21 @@
+---
+interface Props {
+  name: string;
+  role: string;
+  contact: string;
+}
+
+const { name, role, contact } = Astro.props;
+---
+
+<header
+  class="mb-7 border-b-2 border-slate-200 pb-5 print:mb-4 print:pb-2.5"
+>
+  <h1 class="text-[32px] font-extrabold tracking-wide text-slate-900 print:text-2xl">
+    {name}
+  </h1>
+  <p class="mt-1.5 mb-2.5 text-base font-semibold text-indigo-600 print:mt-1 print:mb-1.5 print:text-sm">
+    {role}
+  </p>
+  <p class="text-[13px] text-slate-600 print:text-[11.5px]">{contact}</p>
+</header>

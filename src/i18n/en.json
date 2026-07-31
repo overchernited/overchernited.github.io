@@ -4,7 +4,8 @@
     "about": "About",
     "appearances": "Appearances",
     "projects": "Projects",
-    "technologies": "Technologies"
+    "technologies": "Technologies",
+    "langTooltip": "Switch language"
   },
   "hero": {
     "prompt": "user@browser:~$",

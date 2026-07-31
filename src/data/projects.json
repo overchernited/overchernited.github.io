@@ -21,7 +21,7 @@
     {
       "id": "kat",
       "title": "KAT",
-      "description": "Personalized Coaching Web App",
+      "description": "Embedded terminal (Electron & JavaScript)",
       "top": 500,
       "left": 600,
       "icon": "/images/kat.png",

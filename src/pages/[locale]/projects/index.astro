@@ -4,7 +4,7 @@ const projects = projectsData.projects;
 
 import ProjectCardContent from "../../../components/ProjectCard/Content.astro";
 import ProjectCard from "../../../components/ProjectCard/index.astro";
-import ProjectsLayout from "../../../layouts/ProjectsLayout.astro";
+import Layout from "../../../layouts/Layout.astro";
 import { useTranslations, type Locale, locales } from "../../../i18n";
 
 export async function getStaticPaths() {
@@ -15,10 +15,11 @@ const { locale } = Astro.params as { locale: Locale };
 const _ = useTranslations(locale);
 ---
 
-<ProjectsLayout
+<Layout
   title={_("seo.projects.title")}
   description={_("seo.projects.description")}
   locale={locale}
+  footer={false}
 >
   <!-- Mobile: unified card layout -->
   <div class="grid w-full grid-cols-1 gap-6 p-4 sm:grid-cols-2 lg:hidden">
@@ -52,7 +53,7 @@ const _ = useTranslations(locale);
       ))
     }
   </div>
-</ProjectsLayout>
+</Layout>
 
 <script>
   import gsap from "gsap";

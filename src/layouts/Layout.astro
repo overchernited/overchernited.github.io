@@ -9,6 +9,7 @@ export interface Props {
   image?: string;
   canonicalURL?: string;
   locale?: string;
+  footer?: boolean;
 }
 
 const {
@@ -17,6 +18,7 @@ const {
   image = "https://overchernited.github.io/og-image.png",
   canonicalURL = Astro.url,
   locale: rawLocale,
+  footer = true,
 } = Astro.props;
 
 const locale = (rawLocale as any) || detectLocale(Astro.url.pathname);
@@ -84,23 +86,25 @@ const base = import.meta.env.BASE_URL;
     <Navbar locale={locale} />
     <slot />
 
-    <footer
-      class="p-2 w-full text-center text-white flex gap-5 justify-center items-center flex-col print:hidden"
-    >
-      <p class="font-bold title">Marlon Hernandez 2026</p>
-      <div class="*:hover:underline">
-        <a href={`/${locale}/about`}>{_("nav.about")}</a>
-        <a href={`/${locale}/appearances`}>{_("nav.appearances")}</a>
-        <a href={`/${locale}/projects`}>{_("nav.projects")}</a>
-        <a href={`/${locale}/technologies`}>{_("nav.technologies")}</a>
-      </div>
-      <div class="*:hover:underline">
-        <a>github</a>
-        <a href={`/${locale}/cv`}>cv</a>
-        <a>linkedin</a>
-        <a>gmail</a>
-      </div>
-    </footer>
+    {footer && (
+      <footer
+        class="p-2 w-full text-center text-white flex gap-5 justify-center items-center flex-col print:hidden"
+      >
+        <p class="font-bold title">Marlon Hernandez 2026</p>
+        <div class="*:hover:underline">
+          <a href={`/${locale}/about`}>{_("nav.about")}</a>
+          <a href={`/${locale}/appearances`}>{_("nav.appearances")}</a>
+          <a href={`/${locale}/projects`}>{_("nav.projects")}</a>
+          <a href={`/${locale}/technologies`}>{_("nav.technologies")}</a>
+        </div>
+        <div class="*:hover:underline">
+          <a>github</a>
+          <a href={`/${locale}/cv`}>cv</a>
+          <a>linkedin</a>
+          <a>gmail</a>
+        </div>
+      </footer>
+    )}
   </body>
 </html>
 

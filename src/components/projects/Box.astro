@@ -1,4 +1,6 @@
 ---
+import { cn } from "../../utils";
+
 interface Props {
   class?: string;
 }
@@ -6,6 +8,6 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<div class:list={["rounded-3xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-sm md:p-12", className]}>
+<div class={cn("rounded-3xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-sm md:p-12", className)}>
   <slot />
 </div>
